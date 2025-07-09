@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica de Estética - Agendamento de Massagem</title>
+    <!-- Incluindo o Tailwind CSS para estilização rápida e moderna -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importando uma fonte personalizada do Google Fonts para um visual mais elegante -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Estilo para destacar a opção selecionada usando o pseudo-seletor :has() */
+        label:has(input:checked) {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Esconde as setas do input de número no Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        /* Esconde as setas do input de número no Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Card principal da aplicação -->
+    <div class="w-full max-w-lg mx-auto bg-white rounded-2xl shadow-xl p-8 transition-all duration-300">
+        <!-- Cabeçalho -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Sessões de Massagem</h1>
+            <p class="text-gray-500 mt-2">Escolha o pacote ideal para você.</p>
+        </div>
+
+        <!-- Container para as opções de pacotes -->
+        <div id="opcoes-container" class="space-y-4">
+            <!-- Opção 1: Sessão Avulsa com seletor de quantidade -->
+            <label for="avulsa" class="flex items-center p-4 border-2 border-transparent rounded-lg cursor-pointer bg-gray-50 hover:bg-teal-50 has-[:checked]:bg-teal-100 has-[:checked]:border-teal-400 transition-all duration-300">
+                <input type="radio" id="avulsa" name="pacote" value="60" data-name="Sessão Avulsa" class="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300">
+                <div class="ml-4 flex-grow">
+                    <span class="font-semibold text-gray-700">Sessão Avulsa</span>
+                    <p class="text-sm text-gray-500">1 sessão individual.</p>
+                </div>
+                <!-- Seletor de Quantidade -->
+                <div class="flex items-center gap-2">
+                    <span class="text-sm text-gray-600">Qtd:</span>
+                    <input type="number" id="quantidade-avulsa" value="1" min="1" class="w-16 text-center font-semibold bg-white border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500">
+                </div>
+                <span class="font-bold text-lg text-teal-700 w-20 text-right">R$ 60</span>
+            </label>
+
+            <!-- Opção 2: Pacote 10 Sessões -->
+            <label for="pacote10" class="flex items-center p-4 border-2 border-transparent rounded-lg cursor-pointer bg-gray-50 hover:bg-teal-50 has-[:checked]:bg-teal-100 has-[:checked]:border-teal-400 transition-all duration-300">
+                <input type="radio" id="pacote10" name="pacote" value="600" data-name="Pacote 10 Sessões" class="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300">
+                <div class="ml-4 flex-grow">
+                    <span class="font-semibold text-gray-700">Pacote 10 Sessões</span>
+                    <p class="text-sm text-gray-500">Economize com nosso pacote padrão (R$ 60/sessão).</p>
+                </div>
+                <span class="font-bold text-lg text-teal-700">R$ 600</span>
+            </label>
+            
+            <!-- Opção 3: Promoção Inverno (Na casa da massagista) -->
+            <label for="promo_inverno" class="relative flex items-center p-4 border-2 border-transparent rounded-lg cursor-pointer bg-gray-50 hover:bg-orange-50 has-[:checked]:bg-orange-100 has-[:checked]:border-orange-400 transition-all duration-300">
+                 <div class="absolute -top-3 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">PROMO DE INVERNO</div>
+                <input type="radio" id="promo_inverno" name="pacote" value="550" data-name="Pacote 10 Sessões (Promo de Inverno no meu espaço)" class="h-5 w-5 text-orange-600 focus:ring-orange-500 border-gray-300">
+                <div class="ml-4 flex-grow">
+                    <span class="font-semibold text-gray-700">Pacote 10 Sessões (No meu espaço)</span>
+                    <p class="text-sm text-gray-500">Oferta especial com atendimento no meu espaço.</p>
+                </div>
+                <span class="font-bold text-lg text-orange-600">R$ 550</span>
+            </label>
+            
+            <!-- Opção 4: Promoção Porto Madero -->
+            <label for="porto_madero" class="relative flex items-center p-4 border-2 border-transparent rounded-lg cursor-pointer bg-gray-50 hover:bg-orange-50 has-[:checked]:bg-orange-100 has-[:checked]:border-orange-400 transition-all duration-300">
+                <div class="absolute -top-3 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">EXCLUSIVO</div>
+                <input type="radio" id="porto_madero" name="pacote" value="700" data-name="Pacote 10 Sessões (Exclusivo Porto Madero)" class="h-5 w-5 text-red-600 focus:ring-red-500 border-gray-300">
+                <div class="ml-4 flex-grow">
+                    <span class="font-semibold text-gray-700">Pacote 10 Sessões (Porto Madero)</span>
+                    <p class="text-sm text-gray-500">Atendimento premium na região do Porto Madero.</p>
+                </div>
+                <span class="font-bold text-lg text-red-600">R$ 700</span>
+            </label>
+        </div>
+
+        <!-- Seção do Total e Botão de Agendamento -->
+        <div class="mt-8 pt-6 border-t-2 border-dashed border-gray-200">
+            <div class="flex justify-between items-center">
+                <span class="text-xl font-semibold text-gray-700">Total:</span>
+                <span id="valor-total" class="text-3xl font-bold text-gray-900 transition-all duration-300">R$ 0,00</span>
+            </div>
+            <!-- O botão agora é um link que será atualizado dinamicamente -->
+            <a id="whatsapp-link" href="https://wa.me/556791967381" target="_blank" class="block text-center w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-teal-700 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                Agendar Horário
+            </a>
+        </div>
+    </div>
+
+    <!-- Script JavaScript para a interatividade -->
+    <script>
+        // Seleciona os elementos do HTML que vamos manipular
+        const opcoesContainer = document.getElementById('opcoes-container');
+        const valorTotalEl = document.getElementById('valor-total');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const quantidadeAvulsaInput = document.getElementById('quantidade-avulsa');
+        const numeroWhatsapp = '556791967381';
+
+        function atualizarCalculo() {
+            // Encontra qual opção está selecionada
+            const radioSelecionado = document.querySelector('input[name="pacote"]:checked');
+
+            // Se nada estiver selecionado, zera o total e o link
+            if (!radioSelecionado) {
+                valorTotalEl.textContent = (0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                whatsappLink.href = `https://wa.me/${numeroWhatsapp}`;
+                return;
+            }
+
+            let valor = parseFloat(radioSelecionado.value);
+            let nomePacote = radioSelecionado.getAttribute('data-name');
+            
+            // Lógica especial para a "Sessão Avulsa"
+            if (radioSelecionado.id === 'avulsa') {
+                const quantidade = parseInt(quantidadeAvulsaInput.value) || 1;
+                // O valor do radio é o preço unitário, então multiplicamos pela quantidade
+                valor = valor * quantidade; 
+                // Adiciona a quantidade à mensagem do WhatsApp
+                nomePacote = `${nomePacote} (Quantidade: ${quantidade})`;
+            }
+
+            // Atualiza o valor total na tela
+            valorTotalEl.textContent = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            // Atualiza o link do WhatsApp com a mensagem correta
+            const mensagem = `Olá! Gostaria de agendar o pacote: *${nomePacote}*.`;
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            whatsappLink.href = `https://wa.me/${numeroWhatsapp}?text=${mensagemCodificada}`;
+        }
+
+        // Adiciona "ouvintes" para qualquer mudança nas opções ou na quantidade
+        opcoesContainer.addEventListener('change', atualizarCalculo);
+        quantidadeAvulsaInput.addEventListener('input', atualizarCalculo);
+        
+        // Garante que o seletor de quantidade só afete o cálculo se a opção "avulsa" estiver marcada
+        quantidadeAvulsaInput.addEventListener('focus', () => {
+            document.getElementById('avulsa').checked = true;
+            // Dispara a atualização para garantir que o cálculo seja refeito ao focar no input
+            atualizarCalculo();
+        });
+
+    </script>
+
+</body>
+</html>
